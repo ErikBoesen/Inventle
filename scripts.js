@@ -2,6 +2,7 @@ const elem = {
     object: document.getElementById('object'),
     year: document.getElementById('year'),
     submit: document.getElementById('submit'),
+    guesses: document.getElementById('guesses'),
 };
 
 const START_DATE = new Date(2022, 2, 25);
@@ -14,7 +15,7 @@ var currentDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
                     .split('T')[0];
 
 let history = {};
-let today = {guesses: []};
+let today = {guesses: [], complete: false};
 
 function readState() {
     let stored = localStorage.getItem('history');
@@ -33,10 +34,36 @@ function storeState() {
 
 readState();
 
+function getGuessColor(difference) {
+    let distance = Math.abs(difference);
+    if (distance == 0) return '#2cba00';
+    if (distance < 20) return '#a3ff00';
+    if (distance < 100) return '#fff400';
+    if (distance < 500) return '#ffa700';
+    return '#ff0000';
+}
+
+function insertGuess(guess) {
+    let tr = document.createElement('tr');
+    let year = document.createElement('td');
+    year.textContent = guess.year;
+    tr.appendChild(year)
+    let difference = document.createElement('td');
+    if (guess.difference == 0) {
+        difference.textContent = '';
+    } else if (guess.difference < 0) {
+        difference.textContent = '>';
+    } else if (guess.difference > 0) {
+        difference.textContent = '<';
+    }
+    difference.style.backgroundColor = getGuessColor(guess.difference);
+    elem.guesses.appendChild(tr);
+}
+
 // Setup
 elem.object.textContent = answer.name;
 if (today.guesses) {
     for (let guess of guesses) {
-
+        insertGuess(guess);
     }
 }
