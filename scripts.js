@@ -14,13 +14,15 @@ var currentDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
                     .split('T')[0];
 
 let history = {};
-let today = {};
+let today = {guesses: []};
 
 function readState() {
     let stored = localStorage.getItem('history');
     if (stored !== null) {
         history = JSON.parse(stored);
-        today = history[currentDate] || {};
+        if (history[currentDate]) {
+            today = history[currentDate];
+        }
         console.log('Loading stored history.');
     }
 }
@@ -31,5 +33,10 @@ function storeState() {
 
 readState();
 
+// Setup
 elem.object.textContent = answer.name;
+if (today.guesses) {
+    for (let guess of guesses) {
 
+    }
+}
