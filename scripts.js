@@ -24,8 +24,8 @@ let history = {};
 let today = {guesses: [], complete: false};
 
 function readState() {
-    let stored = localStorage.getItem('history');
-    if (stored !== null) {
+    let stored = localStorage.history;
+    if (stored != null) {
         history = JSON.parse(stored);
         if (history[currentDate]) {
             today = history[currentDate];
@@ -35,7 +35,7 @@ function readState() {
 }
 
 function storeState() {
-    localStorage.setItem('history', history);
+    localStorage.history = JSON.stringify(history);
 }
 
 readState();
@@ -83,13 +83,14 @@ if (today.complete) win();
 
 
 // Element listeners
-elem.year.onchange = function() {
-    elem.submit.disabled = !elem.year.textContent;
+elem.year.oninput = function() {
+    elem.submit.disabled = !Boolean(elem.year.value);
 }
 
+elem.submit.disabled = true;
 elem.submit.onclick = function() {
     let guess = {
-        year: parseInt(elem.submit.value),
+        year: parseInt(elem.year.value),
     };
     guess.difference = guess.year - answer.year;
     if (guess.difference == 0) {
