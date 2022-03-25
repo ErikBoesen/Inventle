@@ -3,23 +3,28 @@
     <head>
         <meta charset="utf-8">
         <title>Inventle</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Inventle</h1>
-        <div class="buttons">
-            <div id="instructions-button">
-                Instructions
+        <header>
+            <div class="buttons">
+                <div id="instructions-button">
+                    <img src="images/help.svg" alt="Help">
+                </div>
             </div>
-            <div id="stats-button">
-                Stats
+            <h1>Inventle</h1>
+            <div class="buttons">
+                <div id="stats-button">
+                    <img src="images/stats.svg" alt="Statistics">
+                </div>
             </div>
-        </div>
+        </header>
+
         <main>
             <div class="object-container">
-                <p>What year was</p>
-                <div class="object"></div>
-                <p>invented?</p>
+                <p>What year was this invented?</p>
+                <div id="object"></div>
             </div>
             <div class="entry">
                 <input type="text" id="year">
@@ -31,5 +36,7 @@
             <h2>How To Play</h2>
             <p>Guess when the thing was invented in under 8 guesses. TODO</p>
         </div>
+        <script src="answers.js"></script>
+        <script src="scripts.js"></script>
     </body>
 </html>
