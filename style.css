@@ -116,7 +116,10 @@ button:disabled:before {
     display: none;
 }
 table {
-
+    margin: 20px auto 0;
+}
+td {
+    width: 100px;
 }
 
 .popup {

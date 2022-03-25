@@ -56,14 +56,15 @@ function insertGuess(guess) {
     tr.appendChild(year)
     let difference = document.createElement('td');
     if (guess.difference == 0) {
-        difference.textContent = '';
+        difference.textContent = 'Success!';
     } else if (guess.difference < 0) {
         difference.textContent = '>';
     } else if (guess.difference > 0) {
         difference.textContent = '<';
     }
     difference.style.backgroundColor = getGuessColor(guess.difference);
-    elem.guesses.appendChild(tr);
+    tr.appendChild(difference);
+    elem.guesses.prepend(tr);
 }
 
 function win() {
@@ -98,8 +99,11 @@ elem.submit.onclick = function() {
         win();
     }
     today.guesses.push(guess);
+    insertGuess(guess);
     console.log('Added guess:', guess);
     storeState();
+    elem.year.value = null;
+    elem.submit.disabled = true;
 }
 
 onclick = function(e) {
