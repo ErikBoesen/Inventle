@@ -1,4 +1,4 @@
-const answers = {
+const answers = [
     {name: 'Mudbricks and mortar', year: -9000},
     {name: 'Alcohol Fermentation', year: -7000},
     {name: 'Dog sleds', year: -7000},
@@ -27,7 +27,7 @@ const answers = {
     {name: 'Mercator projection map', year: 1569},
     {name: 'Newspaper', year: 1605},
     {name: 'Telescope', year: 1608},
-    {name: 'Slide rule', year: 1630}
+    {name: 'Slide rule', year: 1630},
     {name: 'Mechanical calculator', year: 1642},
     {name: 'Barometer', year: 1643},
     {name: 'Vacuum pump', year: 1650},
@@ -115,7 +115,7 @@ const answers = {
     {name: 'Gasoline powered car', year: 1886},
     {name: 'Wind turbine', year: 1887},
     {name: 'Ballpoint pen', year: 1888},
-    {name: 'Chlorofluorocarbons', year: 1890s},
+    {name: 'Chlorofluorocarbons', year: 1890},
     {name: 'Pre-cut Cardboard box', year: 1890},
     {name: 'Zipper', year: 1891},
     {name: 'Cinematograph', year: 1892},
@@ -168,7 +168,7 @@ const answers = {
     {name: 'Commercial high-speed rail', year: 1964},
     {name: 'Kevlar', year: 1965},
     {name: 'ARPANET', year: 1969},
-    {name: 'Public-key cryptography', year: 1970s},
+    {name: 'Public-key cryptography', year: 1970},
     {name: 'Pocket calculator', year: 1970},
     {name: 'Email', year: 1971},
     {name: 'Single-chip microprocessor', year: 1971},
@@ -205,5 +205,5 @@ const answers = {
     {name: 'Solar sail spacecraft', year: 2010},
     {name: 'First synthetic organism', year: 2010},
     {name: 'Commercial quantum computing', year: 2019},
-    {name: 'RNA vaccine', year: 2020},
+    {name: 'RNA vaccine', year: 2020}
 ];
