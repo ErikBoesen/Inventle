@@ -42,11 +42,11 @@ readState();
 
 function getGuessColor(difference) {
     let distance = Math.abs(difference);
-    if (distance == 0) return '#2cba00';
-    if (distance < 20) return '#a3ff00';
-    if (distance < 100) return '#fff400';
-    if (distance < 500) return '#ffa700';
-    return '#ff0000';
+    if (distance == 0) return '#006b3d';
+    if (distance < 20) return '#069c56';
+    if (distance < 100) return '#ff980e';
+    if (distance < 500) return '#ff681e';
+    return '#d3212c';
 }
 
 function insertGuess(guess) {
