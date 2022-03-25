@@ -26,17 +26,30 @@
                 <p>What year was this invented?</p>
                 <div id="object"></div>
             </div>
-            <div class="entry">
-                <input type="text" id="year" placeholder="Guess a Year">
-                <button class="submit">Enter</button>
+            <div id="entry">
+                <input type="number" id="year" placeholder="Guess a Year">
+                <button id="submit">Enter</button>
+            </div>
+            <div id="victory">
+                <p>Congratulations! Come back tomorrow for another challenge.</p>
             </div>
             <table class="guesses">
             </table>
         </main>
 
-        <div id="instructions">
-            <h2>How To Play</h2>
-            <p>Guess when the thing was invented in under 8 guesses. TODO</p>
+        <div class="popup" id="instructions">
+            <div class="content">
+                <img class="close-button" src="images/x.svg" alt="Close">
+                <h2>How To Play</h2>
+                <p>Guess when the thing was invented in under 8 guesses. TODO</p>
+            </div>
+        </div>
+        <div class="popup" id="stats">
+            <div class="content">
+                <img class="close-button" src="images/x.svg" alt="Close">
+                <h2>How To Play</h2>
+                <p>Guess when the thing was invented in under 8 guesses. TODO</p>
+            </div>
         </div>
         <script src="answers.js"></script>
         <script src="scripts.js"></script>

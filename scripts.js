@@ -1,8 +1,14 @@
 const elem = {
     object: document.getElementById('object'),
+    entry: document.getElementById('entry'),
     year: document.getElementById('year'),
     submit: document.getElementById('submit'),
     guesses: document.getElementById('guesses'),
+    victory: document.getElementById('victory'),
+    instructionsButton: document.getElementById('instructions-button'),
+    statsButton: document.getElementById('stats-button'),
+    instructions: document.getElementById('instructions'),
+    stats: document.getElementById('stats'),
 };
 
 const START_DATE = new Date(2022, 2, 25);
@@ -60,10 +66,44 @@ function insertGuess(guess) {
     elem.guesses.appendChild(tr);
 }
 
+function win() {
+    elem.entry.style.display = 'none';
+    elem.victory.style.display = 'block';
+}
+
+
 // Setup
 elem.object.textContent = answer.name;
 if (today.guesses) {
-    for (let guess of guesses) {
+    for (let guess of today.guesses) {
         insertGuess(guess);
+    }
+}
+if (today.complete) win();
+
+
+// Element listeners
+elem.year.onchange = function() {
+    elem.submit.disabled = !elem.year.textContent;
+}
+
+elem.submit.onclick = function() {
+    let guess = {
+        year: parseInt(elem.submit.value),
+    };
+    guess.difference = guess.year - answer.year;
+    if (guess.difference == 0) {
+        today.complete = true;
+        win();
+    }
+    today.guesses.push(guess);
+    console.log('Added guess:', guess);
+    storeState();
+}
+
+onclick = function(e) {
+    let target = e.target;
+    if (target.className == 'close-button') {
+        target.parentElement.parentElement.classList.remove('shown');
     }
 }
