@@ -117,7 +117,14 @@ elem.submit.onclick = function() {
 
 onclick = function(e) {
     let target = e.target;
-    if (target.className == 'close-button') {
+    if (target.className === 'close-button') {
         target.parentElement.parentElement.classList.remove('shown');
     }
+}
+
+elem.instructionsButton.onclick = function() {
+    elem.instructions.classList.toggle('shown');
+}
+elem.statsButton.onclick = function() {
+    elem.stats.classList.toggle('shown');
 }

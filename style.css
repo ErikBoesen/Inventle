@@ -32,12 +32,9 @@ header {
 header .buttons {
 
 }
-header .buttons:first-child {
-}
-header .buttons:last-child {
-}
 header .buttons img {
     max-height: 30px;
+    cursor: pointer;
 }
 main {
     max-width: 8in;
@@ -117,9 +114,11 @@ button:disabled:before {
 }
 table {
     margin: 20px auto 0;
+    border-collapse: collapse;
 }
 td {
-    width: 100px;
+    min-width: 100px;
+    padding: 5px;
 }
 
 .popup {
@@ -146,6 +145,7 @@ td {
 .popup .close-button {
     float: right;
     height: 20px;
+    cursor: pointer;
 }
 .popup button {
     margin-top: 5px;
