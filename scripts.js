@@ -25,6 +25,7 @@ let today = {guesses: [], complete: false};
 
 function readState() {
     let stored = localStorage.history;
+    console.log('Read stored history:', stored);
     if (stored != null) {
         history = JSON.parse(stored);
         if (history[currentDate]) {
@@ -35,6 +36,8 @@ function readState() {
 }
 
 function storeState() {
+    history[currentDate] = today;
+    console.log('Storing history:', history);
     localStorage.history = JSON.stringify(history);
 }
 
