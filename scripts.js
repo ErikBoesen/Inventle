@@ -51,6 +51,18 @@ function getGuessColor(difference) {
     if (distance < 500) return '#ff681e';
     return '#d3212c';
 }
+function getGuessLabel(difference) {
+    if (difference == 0) {
+        return 'Correct!';
+    }
+    let label;
+    if (difference < 0) {
+        label = '❯';
+    } else if (difference > 0) {
+        label = '❮';
+    }
+    return label.repeat((Math.log(Math.abs(difference)) / Math.log(10)) + 1);
+}
 
 function insertGuess(guess) {
     let tr = document.createElement('tr');
@@ -58,14 +70,8 @@ function insertGuess(guess) {
     year.textContent = guess.year;
     tr.appendChild(year)
     let difference = document.createElement('td');
-    if (guess.difference == 0) {
-        difference.textContent = 'Success!';
-    } else if (guess.difference < 0) {
-        difference.textContent = '>';
-    } else if (guess.difference > 0) {
-        difference.textContent = '<';
-    }
     difference.style.backgroundColor = getGuessColor(guess.difference);
+    difference.textContent = getGuessLabel(guess.difference);
     tr.appendChild(difference);
     elem.guesses.prepend(tr);
 }
