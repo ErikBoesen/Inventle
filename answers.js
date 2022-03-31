@@ -5,7 +5,6 @@ const answers = [
     {name: 'Mechanical calculator', year: 1642},
     {name: 'First freely programmable computer', year: 1938},
     {name: 'Dynamite', year: 1867},
-    {name: 'Cotton gin', year: 1793},
     {name: 'Hovercraft', year: 1955},
     {name: 'Oil wells', year: 347},
     {name: 'Single-chip microprocessor', year: 1971},
