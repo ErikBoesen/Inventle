@@ -183,9 +183,15 @@ elem.statsButton.onclick = function() {
     elem.stats.classList.toggle('shown');
 };
 elem.share.onclick = function() {
-    const dummyInput = document.createElement('input');
+    const dummyInput = document.createElement('textarea');
     let text = 'Inventle #' + daysPassed;
     for (let guess of today.guesses) {
-
+        text += getGuessLabel(guess.difference) + '\n';
     }
+    text += '\n';
+    text += 'Play more at https://erikboesen.com/inventle!';
+    dummyInput.value = text;
+    dummyInput.focus();
+    console.log(dummyInput);
+    document.execCommand('copy');
 };
