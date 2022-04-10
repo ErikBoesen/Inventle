@@ -160,6 +160,19 @@ td {
 #victory {
     margin: 10px 0;
 }
+#share {
+    vertical-align: center;
+    margin: 15px 0 10px;
+}
+#share svg {
+    fill: white;
+    width: 20px;
+    transition: .3s;
+    transform: translateY(3px);
+}
+#share:hover svg {
+    fill: #234;
+}
 #stats .stat {
     display: inline-block;
     width: 70px;

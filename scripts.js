@@ -6,8 +6,8 @@ const elem = {
     guesses: document.getElementById('guesses'),
     victory: document.getElementById('victory'),
     instructionsButton: document.getElementById('instructions-button'),
-    statsButton: document.getElementById('stats-button'),
     instructions: document.getElementById('instructions'),
+    statsButton: document.getElementById('stats-button'),
     stats: document.getElementById('stats'),
     stat: {
         played: document.getElementById('stat-played'),
@@ -15,6 +15,7 @@ const elem = {
         currentStreak: document.getElementById('stat-current-streak'),
         maxStreak: document.getElementById('stat-max-streak'),
     },
+    share: document.getElementById('share'),
 };
 
 const START_DATE = new Date(2022, 2, 25);
@@ -147,7 +148,7 @@ if (today.complete) win();
 // Element listeners
 elem.year.oninput = function() {
     elem.submit.disabled = !Boolean(elem.year.value);
-}
+};
 
 elem.submit.disabled = true;
 elem.submit.onclick = function() {
@@ -166,18 +167,25 @@ elem.submit.onclick = function() {
     elem.year.value = null;
     elem.submit.disabled = true;
     generateStatistics();
-}
+};
 
 onclick = function(e) {
     let target = e.target;
     if (target.className === 'close-button') {
         target.parentElement.parentElement.classList.remove('shown');
     }
-}
+};
 
 elem.instructionsButton.onclick = function() {
     elem.instructions.classList.toggle('shown');
-}
+};
 elem.statsButton.onclick = function() {
     elem.stats.classList.toggle('shown');
-}
+};
+elem.share.onclick = function() {
+    const dummyInput = document.createElement('input');
+    let text = 'Inventle #' + daysPassed;
+    for (let guess of today.guesses) {
+
+    }
+};
