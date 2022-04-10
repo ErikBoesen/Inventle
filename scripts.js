@@ -192,7 +192,9 @@ elem.statsButton.onclick = function() {
 };
 elem.share.onclick = function() {
     const dummyInput = document.createElement('textarea');
-    dummyInput.style.visibility = 'invisibility';
+    // TODO: There is no elegance here. Only sleep deprivation and regret.
+    dummyInput.style.opacity = '0';
+    console.log(dummyInput.style.visibility);
     document.body.appendChild(dummyInput);
     let text = 'Inventle #' + daysPassed + ':\n\n';
     for (let guess of today.guesses) {
