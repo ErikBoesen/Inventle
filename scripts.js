@@ -55,7 +55,7 @@ readState();
 
 function getGuessColor(difference) {
     let distance = Math.abs(difference);
-    if (distance == 0) return '#006b3d';
+    if (distance == 0) return '#069c56';
     if (distance < 20) return '#FFC61A';
     if (distance < 100) return '#ff980e';
     if (distance < 500) return '#ff681e';
