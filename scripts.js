@@ -68,7 +68,7 @@ function getGuessEmoji(difference) {
 }
 function getGuessLabel(difference) {
     if (difference == 0) {
-        return 'Correct!';
+        return '';
     }
     let label;
     if (difference < 0) {
@@ -86,7 +86,7 @@ function insertGuess(guess) {
     tr.appendChild(year);
     let difference = document.createElement('td');
     difference.style.backgroundColor = getGuessColor(guess.difference);
-    difference.textContent = getGuessLabel(guess.difference);
+    difference.textContent = getGuessLabel(guess.difference) || 'Correct!';
     tr.appendChild(difference);
     elem.guesses.prepend(tr);
 }
@@ -94,6 +94,7 @@ function insertGuess(guess) {
 function win() {
     elem.entry.style.display = 'none';
     elem.victory.style.display = 'block';
+    elem.stats.classList.add('shown');
 }
 
 function daysElapsed(a, b) {
@@ -190,10 +191,17 @@ elem.instructionsButton.onclick = function() {
 elem.statsButton.onclick = function() {
     elem.stats.classList.toggle('shown');
 };
-elem.share.onclick = function() {
+elem.instructions.onclick = function() {
+    elem.instructions.classList.remove('shown');
+};
+elem.stats.onclick = function() {
+    elem.stats.classList.remove('shown');
+};
+elem.share.onclick = function(e) {
+    e.stopPropagation();
     const dummyInput = document.createElement('textarea');
     // TODO: There is no elegance here. Only sleep deprivation and regret.
-    dummyInput.style.opacity = '0';
+    dummyInput.style.opacity = 0;
     console.log(dummyInput.style.visibility);
     document.body.appendChild(dummyInput);
     let text = 'Inventle #' + daysPassed + ':\n\n';
