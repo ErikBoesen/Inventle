@@ -58,6 +58,14 @@ function getGuessColor(difference) {
     if (distance < 500) return '#ff681e';
     return '#d3212c';
 }
+function getGuessEmoji(difference) {
+    let distance = Math.abs(difference);
+    if (distance == 0) return '✅';
+    if (distance < 20) return '🟩';
+    if (distance < 100) return '🟨';
+    if (distance < 500) return '🟧';
+    return '🟥';
+}
 function getGuessLabel(difference) {
     if (difference == 0) {
         return 'Correct!';
@@ -184,14 +192,17 @@ elem.statsButton.onclick = function() {
 };
 elem.share.onclick = function() {
     const dummyInput = document.createElement('textarea');
-    let text = 'Inventle #' + daysPassed;
+    dummyInput.style.visibility = 'invisibility';
+    document.body.appendChild(dummyInput);
+    let text = 'Inventle #' + daysPassed + ':\n\n';
     for (let guess of today.guesses) {
-        text += getGuessLabel(guess.difference) + '\n';
+        text += getGuessEmoji(guess.difference) + ' ' + getGuessLabel(guess.difference) + '\n';
     }
     text += '\n';
     text += 'Play more at https://erikboesen.com/inventle!';
     dummyInput.value = text;
     dummyInput.focus();
+    dummyInput.select();
     console.log(dummyInput);
     document.execCommand('copy');
 };
