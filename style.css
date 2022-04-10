@@ -147,6 +147,9 @@ td {
     height: 20px;
     cursor: pointer;
 }
+.popup p {
+    margin: 10px 0;
+}
 .popup button {
     margin-top: 5px;
 }
@@ -154,9 +157,6 @@ td {
     display: flex;
 }
 
-#stats .row {
-
-}
 #victory {
     margin: 10px 0;
 }
@@ -175,8 +175,9 @@ td {
 }
 #stats .stat {
     display: inline-block;
-    width: 70px;
+    width: 90px;
     vertical-align: top;
+    text-align: center;
 }
 #stats .stat .number {
     font-size: 40px;

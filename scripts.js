@@ -12,6 +12,7 @@ const elem = {
     stat: {
         played: document.getElementById('stat-played'),
         winPercentage: document.getElementById('stat-win-percentage'),
+        averageGuesses: document.getElementById('stat-average-guesses'),
         currentStreak: document.getElementById('stat-current-streak'),
         maxStreak: document.getElementById('stat-max-streak'),
     },
@@ -39,6 +40,8 @@ function readState() {
             today = history[currentDate];
         }
         console.log('Loading stored history.');
+    } else {
+        elem.instructions.classList.add('shown');
     }
 }
 
@@ -53,7 +56,7 @@ readState();
 function getGuessColor(difference) {
     let distance = Math.abs(difference);
     if (distance == 0) return '#006b3d';
-    if (distance < 20) return '#c4f500';
+    if (distance < 20) return '#FFC61A';
     if (distance < 100) return '#ff980e';
     if (distance < 500) return '#ff681e';
     return '#d3212c';
@@ -108,12 +111,16 @@ function generateStatistics() {
     // Win percentage
     let played = 0;
     let wins = 0;
+    let averageGuesses = 0;
     for (let day in history) {
         played++;
         if (history[day].complete) {
             wins++;
+            averageGuesses += history[day].guesses.length;
         }
     }
+    averageGuesses = parseInt(averageGuesses / wins);
+
     let winPercentage = 0;
     if (played > 0) {
         winPercentage = parseInt(wins / played * 100);
@@ -134,9 +141,9 @@ function generateStatistics() {
         if (date == currentDate) currentStreak = streak;
     }
 
-    console.log(played);
     elem.stat.played.textContent = played;
     elem.stat.winPercentage.textContent = winPercentage;
+    elem.stat.averageGuesses.textContent = averageGuesses;
     elem.stat.maxStreak.textContent = maxStreak;
     elem.stat.currentStreak.textContent = currentStreak;
 }
