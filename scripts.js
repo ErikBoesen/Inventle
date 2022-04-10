@@ -9,6 +9,12 @@ const elem = {
     statsButton: document.getElementById('stats-button'),
     instructions: document.getElementById('instructions'),
     stats: document.getElementById('stats'),
+    stat: {
+        played: document.getElementById('stat-played'),
+        winPercentage: document.getElementById('stat-win-percentage'),
+        currentStreak: document.getElementById('stat-current-streak'),
+        maxStreak: document.getElementById('stat-max-streak'),
+    },
 };
 
 const START_DATE = new Date(2022, 2, 25);
@@ -46,7 +52,7 @@ readState();
 function getGuessColor(difference) {
     let distance = Math.abs(difference);
     if (distance == 0) return '#006b3d';
-    if (distance < 20) return '#069c56';
+    if (distance < 20) return '#c4f500';
     if (distance < 100) return '#ff980e';
     if (distance < 500) return '#ff681e';
     return '#d3212c';
@@ -68,7 +74,7 @@ function insertGuess(guess) {
     let tr = document.createElement('tr');
     let year = document.createElement('td');
     year.textContent = guess.year;
-    tr.appendChild(year)
+    tr.appendChild(year);
     let difference = document.createElement('td');
     difference.style.backgroundColor = getGuessColor(guess.difference);
     difference.textContent = getGuessLabel(guess.difference);
@@ -80,6 +86,53 @@ function win() {
     elem.entry.style.display = 'none';
     elem.victory.style.display = 'block';
 }
+
+function daysElapsed(a, b) {
+    let seconds = new Date(a).getTime() - new Date(b).getTime();
+    let days = seconds / (1000 * 3600 * 24);
+    return Math.abs(days);
+}
+
+function generateStatistics() {
+
+    // Played
+    // Win percentage
+    let played = 0;
+    let wins = 0;
+    for (let day in history) {
+        played++;
+        if (history[day].complete) {
+            wins++;
+        }
+    }
+    let winPercentage = 0;
+    if (played > 0) {
+        winPercentage = (wins / played * 100).toFixed(1);
+    }
+
+    let streak = 0;
+    let lastWin = null;
+    let maxStreak = 0;
+    let currentStreak = 0;
+    for (let date in history) {
+        if (lastWin == null || daysElapsed(date, lastWin) != 1) {
+            streak = 0;
+        }
+        streak += 1;
+        lastWin = date;
+
+        if (streak > maxStreak) maxStreak = streak;
+        if (date == currentDate) currentStreak = streak;
+    }
+
+    console.log(played);
+    elem.stat.played.textContent = played;
+    elem.stat.winPercentage.textContent = winPercentage;
+    elem.stat.maxStreak.textContent = maxStreak;
+    elem.stat.currentStreak.textContent = currentStreak;
+}
+
+generateStatistics();
 
 
 // Setup
@@ -113,6 +166,7 @@ elem.submit.onclick = function() {
     storeState();
     elem.year.value = null;
     elem.submit.disabled = true;
+    generateStatistics();
 }
 
 onclick = function(e) {
