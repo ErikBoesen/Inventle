@@ -94,7 +94,6 @@ function daysElapsed(a, b) {
 }
 
 function generateStatistics() {
-
     // Played
     // Win percentage
     let played = 0;
@@ -107,7 +106,7 @@ function generateStatistics() {
     }
     let winPercentage = 0;
     if (played > 0) {
-        winPercentage = (wins / played * 100).toFixed(1);
+        winPercentage = parseInt(wins / played * 100);
     }
 
     let streak = 0;

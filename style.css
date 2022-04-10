@@ -153,3 +153,18 @@ td {
 .popup.shown {
     display: flex;
 }
+
+#stats .row {
+
+}
+#victory {
+    margin: 10px 0;
+}
+#stats .stat {
+    display: inline-block;
+    width: 70px;
+    vertical-align: top;
+}
+#stats .stat .number {
+    font-size: 40px;
+}
