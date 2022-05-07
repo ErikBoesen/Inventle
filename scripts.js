@@ -119,7 +119,7 @@ function generateStatistics() {
             averageGuesses += history[day].guesses.length;
         }
     }
-    averageGuesses = parseInt(averageGuesses / wins);
+    averageGuesses = parseInt(averageGuesses / wins) || 0;
 
     let winPercentage = 0;
     if (played > 0) {
